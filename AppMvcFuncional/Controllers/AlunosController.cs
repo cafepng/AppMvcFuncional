@@ -14,7 +14,6 @@ public class AlunosController : Controller
         _context = context;
     }
 
-    // GET: Alunos
     public async Task<IActionResult> Index()
     {
           return _context.Aluno != null ? 
@@ -22,7 +21,6 @@ public class AlunosController : Controller
                       Problem("Entity set 'ApplicationDbContext.Aluno'  is null.");
     }
 
-    // GET: Alunos/Details/5
     public async Task<IActionResult> Details(int? id)
     {
         if (id == null || _context.Aluno == null)
@@ -40,16 +38,12 @@ public class AlunosController : Controller
         return View(aluno);
     }
 
-    // GET: Alunos/Create
     public IActionResult Create()
     {
         return View();
     }
 
-    // POST: Alunos/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-    [HttpPost]
+    [HttpPost] 
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("Id,Nome,DataNascimento,Email,Avaliacao,Ativo")] Aluno aluno)
     {
@@ -62,7 +56,6 @@ public class AlunosController : Controller
         return View(aluno);
     }
 
-    // GET: Alunos/Edit/5
     public async Task<IActionResult> Edit(int? id)
     {
         if (id == null || _context.Aluno == null)
@@ -78,12 +71,9 @@ public class AlunosController : Controller
         return View(aluno);
     }
 
-    // POST: Alunos/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,DataNascimento,Email,Avaliacao,Ativo")] Aluno aluno)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,DataNascimento,Email,EmailConfirmacao,Avaliacao,Ativo")] Aluno aluno)
     {
         if (id != aluno.Id)
         {
@@ -113,7 +103,6 @@ public class AlunosController : Controller
         return View(aluno);
     }
 
-    // GET: Alunos/Delete/5
     public async Task<IActionResult> Delete(int? id)
     {
         if (id == null || _context.Aluno == null)
@@ -131,7 +120,6 @@ public class AlunosController : Controller
         return View(aluno);
     }
 
-    // POST: Alunos/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
