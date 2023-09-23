@@ -79,6 +79,8 @@ public class AlunosController : Controller
             return NotFound();
         }
 
+        ModelState.Remove("EmailConfirmacao");
+
         if (ModelState.IsValid)
         {
             try
